@@ -221,13 +221,19 @@ public:
       in >> mt.pVector[i];
     return in;
   }
+
   friend ostream & operator<<( ostream &out, const TMatrix &mt)
   {
-    for (int i = 0; i < mt.Size; i++)
-      out << mt.pVector[i] << endl;
+      for (int i = 0; i < mt.Size; i++)
+      {
+          for (int j = 0; j < i; j++)
+              out << "\t";
+          out << mt.pVector[i] << endl;
+      }
     return out;
   }
 };
+
 
 template <class ValType>
 TMatrix<ValType>::TMatrix(int s): TVector<TVector<ValType> >(s)
